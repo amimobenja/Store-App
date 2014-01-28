@@ -1,0 +1,38 @@
+{% extends 'app/base.html' %}
+
+{% block title %} {{ cat_name }} {% endblock %}
+
+{% block body_block %}	
+	
+	<div class="container">
+		<div class="row">
+			<h1>Items Available in {{ cat_name }}</h1>					
+				{% if category %}		
+					{% if items %}
+						{% for item in items %}
+							<div class="col-md-4">
+								<center>
+								<h3 class="text-center">{{ item.item_name }}</h3>
+									<a href="/app/goto/?item_id={{ item.id }}"><img src="app/media/{{ item.photos }}" id="items" class="img-responsive img-thumbnail" alt="Item Image"/></a>
+									
+									<span class="badge badge-success">{{ item.price}}</span>
+									<p>
+										{{ item.item_description }}
+									</p>
+								</center>
+							</div>
+						{% endfor %}
+					{% else %}
+						<strong>There are no Items at the moment</strong>
+					{% endif %}
+				{% else %}
+					<strong>{{ cat_name }} is not present </strong>
+				{% endif %}				
+		</div>
+	{% if user.is_authenticated %}
+	<div class="btn-group">
+		<a class="btn btn-success btn-small" href="/app/category/{{ url_category_name }}/add_item/">Add more {{ cat_name }}</a>
+	</div
+	{% endif %}	
+	</div>
+{% endblock %}

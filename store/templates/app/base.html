@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+	
+	<head>
+		<title>Online Store - {% block title %} Awesome Online Store {% endblock %}</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.00">
+		<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+		<link href="{% static 'css/styles.css' %}" rel="stylesheet">
+		<link rel="shortcut icon" href="{% static 'images/launcher.png' %}">
+		<link rel=stylesheet href="{% static 'css/general.css' %}" media="all" type="text/css">
+	</head>
+	
+	<body>
+		<div class="navbar navbar-inverse navbar-static-top">
+			<div class="container">
+				<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/app/"><img id="icon" src="{% static 'images/launcher.png' %}"/> Online Store</a>
+				  <div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="active"><a href="/app/">Home</a></li>
+						{% if user.is_authenticated %}
+							{%if user.username == "afro" %}
+								<li><a href="/app/add_category/">Add Category</a></li>
+							{% endif %}
+						<li><a href="/app/profile">{{ user.username }}'s Profile</a></li>
+						<li><a href="/app/logout/">Logout</a></li>
+						{% else %}
+						<li><a href="/app/register/">Register</a></li>
+						<li><a href="/app/login/">Login</a></li>
+						{% endif %}	
+						<li><a href="/app/about/">About</a></li>							
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<div class="span9">
+			{% block body_block %}
+			{% endblock %}
+		</div>			
+
+		<hr>
+	    
+	    <footer>
+			<div class="container">
+				<p>&copy; Online Store: Simple Django 2013 Web App</p>
+			</div>
+		</footer>	    
+	    
+	    <script src="{% static 'js/jquery-2.1.0.min.js' %}"></script>
+		<script src="{% static 'js/bootstrap.js' %}"></script>
+		<script src="{% static 'js/app-ajax.js' %}"></script>	
+	</body>
+</html>

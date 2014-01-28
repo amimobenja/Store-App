@@ -1,0 +1,41 @@
+{% extends 'app/base.html' %}
+
+{% block body_block %}
+<div class="container">
+	<div class="row">
+		<h1>Login</h1>	
+		<div class="span8">
+		<form class="form-signin span4" id="login_form" method="post" action="/app/login/">
+				{% csrf_token %}
+				
+				{% if bad_details %}
+				<strong>Incorrect Username and/or Password</strong><br />
+				{% elif disabled_account %}
+				<strong>Your Account has been disabled.</strong><br />
+				{% endif %}
+				<div class="control-group">
+					<label class="control-label">Username:</label>
+						<div class="controls">
+							<input type="text" class="input-xlarge" id="user_name" name="username" rel="popover" data-content="Enter your username." data-original-title="Full Name">
+						</div>
+				</div>
+
+
+				<div class="control-group">
+					<label class="control-label">Password</label>
+						<div class="controls">
+							<input type="password" class="input-xlarge" id="user_email" name="password" rel="popover" data-content="Password" data-original-title="Password">
+						</div>
+				</div>
+				
+				<div class="control-group">
+					<label class="control-label"></label>
+						<div class="controls">
+							<button type="submit" class="btn btn-success" >Sign in</button>
+						</div>
+				</div>
+		</form>
+		</div>
+	</div>
+</div>		
+{% endblock %}

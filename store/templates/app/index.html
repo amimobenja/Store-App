@@ -1,0 +1,40 @@
+{% extends 'app/base.html' %}
+
+{% block body_block %}
+	<div class="jumbotron">
+		<div class="container">
+			<center>
+				{% if user.is_authenticated %}
+					<h1>Welcome to Online Store!</h1>
+					{% else %}
+					<h1>Welcome to Online Store</h1>
+				{% endif %}	
+					<p>All the Shopping you may need!</p>
+					<a class="btn btn-success btn-lg">Go For It!</a>
+			</center>				
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			{% if categories %}
+				{% for category in categories %}
+					<div class="col-md-4">	
+					<center>						
+						<h2 class="text-center">{{ category.name }}</h2> 
+						{% if user.is_authenticated %}
+							<button id ="likes" data-catid="{{category.id}}" class="btn btn-mini btn-primary" type="button">Like</button>
+						{% endif %}	
+						<a href="/app/category/{{ category.url }}"><img src="app/media/{{ category.image }}" class="img-responsive img-rounded"  id="upload" /></a>
+						<p>
+							{{ category.description }}
+						</p>
+					</center>								
+					</div>
+				{% endfor %}
+			{% else %}
+				<strong>There are no categories at the moment</strong>
+			{% endif %}				
+		</div>
+	</div>	
+
+{% endblock %}
