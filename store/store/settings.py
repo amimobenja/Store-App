@@ -14,6 +14,7 @@ DATABASE_PATH = os.path.join(PROJECT_PATH, 'store.db')
 
 
 DEBUG = False
+
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
