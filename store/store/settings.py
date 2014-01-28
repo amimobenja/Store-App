@@ -13,7 +13,7 @@ STATIC_PATH = os.path.join(PROJECT_PATH, 'static')
 DATABASE_PATH = os.path.join(PROJECT_PATH, 'store.db')
 
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
