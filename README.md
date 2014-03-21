@@ -11,3 +11,7 @@ that in a simple manner reflect those of eBay and Amazon.
 Interestingly, it can also be used as an app that provides recommendations of various items such as Books, Cloting styles etc.
 
 You can view it and your recommendations will be highly appreciated.
+
+http://amimobenja.pythonanywhere.com/app/
+
+
